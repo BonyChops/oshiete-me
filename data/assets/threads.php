@@ -23,23 +23,22 @@ if ($thread === false) {
             $solvedToggle = false;
         }
     }
+    if ($addReply) {
+        $reply = $thread['reply'];
+        $date = new DateTime();
+        $reply = [
+            "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+            "author" => $userId,
+            "content" => $_POST['content'],
+            "date" => $date->format(DateTime::ATOM),
+            "type" => "reply"
+        ];
+        array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
+        saveData($data);
+        header('location: ./?id=' . $_GET['id']);
+        exit();
+    }
     if ($userId == $thread['id']) {
-        if ($addReply) {
-            $reply = $thread['reply'];
-            $date = new DateTime();
-            $reply = [
-                "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
-                "author" => $userId,
-                "content" => $_POST['content'],
-                "date" => $date->format(DateTime::ATOM),
-                "type" => "reply"
-            ];
-            array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
-            saveData($data);
-            header('location: ./?id=' . $_GET['id']);
-            exit();
-        }
-
         if ($solvedToggle) {
             $reply = $thread['reply'];
             $date = new DateTime();
