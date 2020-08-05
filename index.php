@@ -51,8 +51,16 @@ require_once(__DIR__ . '/data/assets/setup.php');
         }
 
         const check = () => {
-            alert($('input#title').val());
-            alert($('textarea#content').val());
+            const pattern = /.*\S+.*/
+            if($('input#title').val().match(pattern) === null){
+                M.toast({html: '空白のまま投稿することはできません。'})
+                return false
+            }
+            if($('textarea#content').val().match(pattern) === null){
+                M.toast({html: '空白のまま投稿することはできません。'})
+                return false;
+            }
+
         }
 
         const openNav = () => {
