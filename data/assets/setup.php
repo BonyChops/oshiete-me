@@ -20,7 +20,7 @@ function googleLoginURI($redirect_to = false)
     $query = array(
         'client_id' => GOOGLE_CLIENT_ID,
         'redirect_uri' => GOOGLE_REDIRECT_URI,
-        'scope' => 'https://www.googleapis.com/auth/userinfo.profile',
+        'scope' => 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
         'response_type' => 'code',
     );
 
