@@ -10,10 +10,13 @@ foreach ($params as $param) {
     if (!isset($_POST[$param])) {
         $addReply = false;
     }
+}
+foreach ($paramsSolvedToggle as $param) {
     if (!isset($_POST[$paramsSolvedToggle])) {
         $solvedToggle = false;
     }
 }
+
 if ($addReply) {
     $thread = findThread($_GET['id'], $threads);
     $reply = $thread['reply'];
@@ -31,7 +34,7 @@ if ($addReply) {
     exit();
 }
 
-if($solvedToggle){
+if ($solvedToggle) {
     $thread = findThread($_GET['id'], $threads);
     $reply = $thread['reply'];
     $date = new DateTime();
