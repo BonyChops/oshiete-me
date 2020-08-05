@@ -37,6 +37,6 @@
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">同意しない</a>
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">同意して投稿する</a>
+        <a onclick="submit()" class="modal-close waves-effect waves-green btn">同意して投稿する</a>
     </div>
 </div>

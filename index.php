@@ -49,6 +49,11 @@ require_once(__DIR__ . '/data/assets/setup.php');
             await sleep(3);
             M.TapTarget.getInstance($('.tap-target')).close();
         }
+
+        const check = () => {
+
+        }
+
         const openNav = () => {
             M.Sidenav.getInstance($('#slide-out')).open();
         }

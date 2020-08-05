@@ -31,7 +31,9 @@ function googleLoginURI($redirect_to = false)
     return 'https://accounts.google.com/o/oauth2/auth?' . http_build_query($query);
 }
 $loggedIn = isset($_SESSION['GOOGLE_USER_INFO']);
-
+if($loggedIn){
+    $userId = $_SESSION['GOOGLE_USER_INFO']->{"id"};
+}
 $threads = $data['threads'];
 $oauthTokens = $data['oauthTokens'];
 $animals = ['わに', 'かに', 'さる', 'きじ', 'いぬ', 'うさぎ'];
