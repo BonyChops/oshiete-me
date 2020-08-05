@@ -10,7 +10,7 @@
                     <p><span class="white-text email">jdandturk@gmail.com</span></p>
                 </div>
             </li>
-            <li><a href="<?= $loggedIn ? '/logout' : googleLoginURI() ?>"><?= $loggedIn ?  'ログアウト' : 'ログイン' ?></a></li>
+            <li><a href="<?= $loggedIn ? './logout' : googleLoginURI() ?>"><?= $loggedIn ?  'ログアウト' : 'ログイン' ?></a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
             <li><a href="javascript: openNav();"><i class="material-icons">menu</i></a></li>
