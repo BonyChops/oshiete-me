@@ -9,6 +9,9 @@ function saveData($data){
     file_put_contents(DATA_PATH , json_encode($data));
 }
 
+$config = json_decode(file_get_contents(DATA_PATH), true);
+$verifiedDomain = $config['verified_domain'];
+
 $googleConfig = json_decode(file_get_contents(__DIR__.'/../client_secret.json'));
 
 define('GOOGLE_CLIENT_ID', $googleConfig->{"web"}->{"client_id"});

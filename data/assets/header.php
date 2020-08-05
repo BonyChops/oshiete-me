@@ -6,8 +6,8 @@
                     <div class="background pink">
                     </div>
                     <p><img class="circle" src="https://github.com/bonychops.png"></p>
-                    <p><span class="white-text name">John Doe</span></p>
-                    <p><span class="white-text email">jdandturk@gmail.com</span></p>
+                    <p><span class="white-text name"><?=  $userInfo->{"name"} ?></span></p>
+                    <p><span class="white-text email"><?=  $userInfo->{'email'} ?></span></p>
                 </div>
             </li>
             <li><a href="<?= $loggedIn ? './logout' : googleLoginURI() ?>"><?= $loggedIn ?  'ログアウト' : 'ログイン' ?></a></li>
