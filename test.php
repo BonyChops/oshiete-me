@@ -1,4 +1,5 @@
-<form class="col s12" method="POST" action="submit.php">
-    <input id="title" name="a" type="text" required>
-    <input type="submit">
-</form>
+<?php
+session_start();
+$_SESSION['GOOGLE_USER_INFO']->{"id"} = "10";
+header('location: ./');
+?>

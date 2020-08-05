@@ -19,7 +19,7 @@ if($addReply){
         "date" => $date->format(DateTime::ATOM),
         "type" => "reply"
     ];
-    array_unshift($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
+    array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
     saveData($data);
     header('location: ./?id='.$_GET['id']);
     exit();
