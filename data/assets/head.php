@@ -1,3 +1,10 @@
+<?php
+//以下有効で常時ログイン必須に
+if(!$loggedIn){
+    header('location: '.googleLoginURI());
+    exit();
+}
+?>
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
