@@ -36,17 +36,18 @@ foreach ($threads as $thread) { ?>
         <div class="card-content">
             <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?>
                 <span class="right">
-                    <a class='dropdown-trigger' href='#' data-target='dropdown1'><i class="material-icons">more_vert</i></a>
+                    <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
                 </span>
             </span>
             <p><?= mb_substr($thread['content'], 0, 20)?></p>
         </div>
     </div>
-    <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="#!">編集</a></li>
-        <li><a href="#!">削除</a></li>
+    <ul id='dropdown_<?= $thread['id'] ?>' class='dropdown-content'>
+        <?php if($thread['author'] == $userId){ ?>
+        <li><a onclick="deleteThread(<?= $thread['id'] ?>)">削除</a></li>
         <li class="divider" tabindex="-1"></li>
-        <li><a href="#!">報告する</a></li>
+        <?php } ?>
+        <li><a onclick="ban();">報告する</a></li>
     </ul>
     <br>
 <?php } ?>

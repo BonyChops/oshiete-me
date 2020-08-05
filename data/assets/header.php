@@ -36,7 +36,19 @@
         </p>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">同意しない</a>
+        <a class="modal-close waves-effect waves-green btn-flat">同意しない</a>
         <a onclick="submit()" class="modal-close waves-effect waves-green btn">同意して投稿する</a>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="delete" class="modal">
+    <div class="modal-content">
+        <h4>投稿を消す</h4>
+        <p>本当に消す？</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">消さない</a>
+        <a href="" class="modal-close waves-effect red btn delete-btn">消す</a>
     </div>
 </div>

@@ -50,6 +50,10 @@ require_once(__DIR__ . '/data/assets/setup.php');
             M.TapTarget.getInstance($('.tap-target')).close();
         }
 
+        const deleteThread = (id) => {
+
+        }
+
         const check = () => {
             const pattern = /.*\S+.*/
             if($('input#title').val().match(pattern) === null){
@@ -69,6 +73,10 @@ require_once(__DIR__ . '/data/assets/setup.php');
 
         const openNav = () => {
             M.Sidenav.getInstance($('#slide-out')).open();
+        }
+
+        const ban = () => {
+            alert("良くないコンテンツを発見しましたか？ごめんなさい、通報フォームは作っていません。。。\n管理者にDiscordなりでそっと教えてね。");
         }
     </script>
 </body>
