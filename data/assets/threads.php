@@ -12,7 +12,7 @@ foreach ($params as $param) {
     }
 }
 foreach ($paramsSolvedToggle as $param) {
-    if (!isset($_POST[$paramsSolvedToggle])) {
+    if (!isset($_POST[$param])) {
         $solvedToggle = false;
     }
 }
