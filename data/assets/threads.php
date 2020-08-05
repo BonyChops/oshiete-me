@@ -2,18 +2,24 @@
 ini_set('display_errors', "On");
 
 $params = ['content'];
+$paramsSolvedToggle = ['solvedToggle'];
+
 $addReply = true;
-foreach($params as $param){
-    if(!isset($_POST[$param])){
+$solvedToggle = true;
+foreach ($params as $param) {
+    if (!isset($_POST[$param])) {
         $addReply = false;
     }
+    if (!isset($_POST[$paramsSolvedToggle])) {
+        $solvedToggle = false;
+    }
 }
-if($addReply){
+if ($addReply) {
     $thread = findThread($_GET['id'], $threads);
     $reply = $thread['reply'];
     $date = new DateTime();
     $reply = [
-        "id" => isset($reply[0]) ? $reply[0]['id'] + 1: 0,
+        "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
         "author" => $userId,
         "content" => $_POST['content'],
         "date" => $date->format(DateTime::ATOM),
@@ -21,7 +27,25 @@ if($addReply){
     ];
     array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
     saveData($data);
-    header('location: ./?id='.$_GET['id']);
+    header('location: ./?id=' . $_GET['id']);
+    exit();
+}
+
+if($solvedToggle){
+    $thread = findThread($_GET['id'], $threads);
+    $reply = $thread['reply'];
+    $date = new DateTime();
+    $reply = [
+        "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+        "author" => $userId,
+        "content" => $thread['isSolved'] ? 'notSolved' : 'solved',
+        "date" => $date->format(DateTime::ATOM),
+        "type" => "status"
+    ];
+    array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
+    $data['threads'][findThread($_GET['id'], $threads, true)]['isSolved'] = !$thread['isSolved'];
+    saveData($data);
+    header('location: ./?id=' . $_GET['id']);
     exit();
 }
 ?>
@@ -64,6 +88,11 @@ if (!$found) {
         <?php } ?>
         <li><a onclick="ban();">報告する</a></li>
     </ul><br>
+    <form method="post" action="./?id=<?= $thread['id'] ?>">
+        <button class="btn waves-effect waves-light" type="submit" name="solvedToggle">
+            <?= $thread['isSolved'] ? '🤔 また迷宮いりした...' : '✅ 解決した！' ?>
+        </button>
+    </form>
     <div class="row">
         <form action="./?id=<?= $_GET['id'] ?>" method="post">
             <div class="input-field col s12">
@@ -82,45 +111,53 @@ if (!$found) {
     $cnt = 0;
     $preData = [];
     shuffle($animals);
-    foreach ($replies as $reply) { ?>
-        <div class="card<?php if ($reply['author'] == $userId) echo " yellow lighten-3" ?>">
-            <a class="btn-floating halfway-fab waves-effect waves-light red center-align"><i class="material-icons">feedback</i></a>
-            <div class="card-content">
-                <span class="card-title">
-                    <?php
-                    //Name judgement
-                    if ($reply['author'] === $thread['author']) {
-                        echo "質問者";
-                    } else {
-                        if (isset($preData[$reply['author']])) {
-                            echo $preData[$reply['author']];
+    foreach ($replies as $reply) {
+        if ($reply['type'] == "reply") {
+    ?>
+            <div class="card<?php if ($reply['author'] == $userId) echo " yellow lighten-3" ?>">
+                <div class="card-content">
+                    <span class="card-title">
+                        <?php
+                        //Name judgement
+                        if ($reply['author'] === $thread['author']) {
+                            echo "質問者";
                         } else {
-                            $crtName = $animals[$cnt];
-                            if ($loopCnt >= 2) {
-                                $crtName = $crtName . $loopCnt;
-                            }
-                            $preData[$reply['author']] = $crtName;
-                            echo $crtName;
-                            $cnt++;
-                            if ($cnt >= count($animals)) {
-                                $loopCnt++;
-                                $cnt = 0;
+                            if (isset($preData[$reply['author']])) {
+                                echo $preData[$reply['author']];
+                            } else {
+                                $crtName = $animals[$cnt];
+                                if ($loopCnt >= 2) {
+                                    $crtName = $crtName . $loopCnt;
+                                }
+                                $preData[$reply['author']] = $crtName;
+                                echo $crtName;
+                                $cnt++;
+                                if ($cnt >= count($animals)) {
+                                    $loopCnt++;
+                                    $cnt = 0;
+                                }
                             }
                         }
-                    }
-                    ?> さん</span>
-                <p><?= nl2br($reply['content']) ?> <span class="right">
-                        <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $reply['id'] ?>'><i class="material-icons">more_vert</i></a>
-                    </span></p>
+                        ?> さん</span>
+                    <p><?= nl2br($reply['content']) ?> <span class="right">
+                            <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $reply['id'] ?>'><i class="material-icons">more_vert</i></a>
+                        </span></p>
+                </div>
             </div>
-        </div>
-        <ul id='dropdown_<?= $reply['id'] ?>' class='dropdown-content'>
-            <?php if ($reply['author'] == $userId) { ?>
-                <li><a onclick="deleteThread(<?= $reply['id'] ?>)">削除</a></li>
-                <li class="divider" tabindex="-1"></li>
-            <?php } ?>
-            <li><a onclick="ban();">報告する</a></li>
-        </ul><br>
+            <ul id='dropdown_<?= $reply['id'] ?>' class='dropdown-content'>
+                <?php if ($reply['author'] == $userId) { ?>
+                    <li><a onclick="deleteThread(<?= $reply['id'] ?>)">削除</a></li>
+                    <li class="divider" tabindex="-1"></li>
+                <?php } ?>
+                <li><a onclick="ban();">報告する</a></li>
+            </ul><br>
 
+        <?php } else if ($reply['type'] == "status") { ?>
+            <div class="card<?php if ($reply['author'] == $userId) echo " yellow lighten-3" ?>">
+                <div class="card-content">
+                    <p><?= $content == "solved" ? '✅ 質問者さんがこのスレッドを"Solved"にマークしました。解決して良かったです👏👏👏' : '🤔 おっと、質問者さんがまたこのスレッドを"Needs help"にマークしたみたいです。' ?></p>
+                </div>
+            </div><br>
+        <?php } ?>
     <?php } ?>
 <?php } ?>

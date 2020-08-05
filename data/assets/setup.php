@@ -7,7 +7,7 @@ $data = file_exists(DATA_PATH) ? json_decode(file_get_contents(DATA_PATH), true)
     "oauthTokens"=> []
 ];
 function saveData($data){
-    file_put_contents(DATA_PATH , json_encode($data));
+    file_put_contents(DATA_PATH , json_encode($data, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 }
 
 $config = json_decode(file_get_contents(CONFIG_PATH), true);
