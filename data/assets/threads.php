@@ -8,7 +8,7 @@
 <?php
 $found = false;
 foreach ($threads as $threadSearch) {
-    if ($_GET['id'] === $threadSearch['id']) {
+    if ($_GET['id'] == $threadSearch['id']) {
         $found = true;
         $thread = $threadSearch;
         break;
