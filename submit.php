@@ -21,6 +21,6 @@ $thread = [
     "isSolved" => false,
     "reply" => []
 ];
-array_push($data['threads'], $thread);
+array_unshift($data['threads'], $thread);
 saveData($data);
 header('location: ./?success=true');

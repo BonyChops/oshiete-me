@@ -5,8 +5,8 @@
                 <div class="user-view">
                     <div class="background pink">
                     </div>
-                    <p><img class="circle" src="https://github.com/bonychops.png"></p>
-                    <p><span class="white-text name"><?=  $userInfo->{"name"} ?></span></p>
+                    <p><img class="circle" src="<?= $loggedIn ? $userInfo->{"picture"} : 'https://github.com/bonychpos.png' ?>"></p>
+                    <p><span class="white-text name"><?= $loggedIn ? $userInfo->{"name"} : 'おしえてME未ログイン' ?></span></p>
                     <p><span class="white-text email"><?=  $userInfo->{'email'} ?></span></p>
                 </div>
             </li>

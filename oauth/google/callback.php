@@ -63,6 +63,7 @@ if(array_search($userInfo->{'hd'}, $verifiedDomain) === false){
 session_start();
 $_SESSION['GOOGLE_ACCESS_TOKEN'] = $accessToken;
 $_SESSION['GOOGLE_USER_INFO'] = $userInfo;
+
 if(isset($_GET['redirect'])){
         header('Location: '.$_GET['redirect']);
 }else{
