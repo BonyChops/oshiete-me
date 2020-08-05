@@ -12,25 +12,16 @@ require_once(__DIR__ . '/data/assets/setup.php');
 
     <div class="container">
         <div class="row">
-            <div class="input-field col s12 m8 offset-m2">
-                <?php
-                if (!isset($_GET['id'])) { ?>
-                    <select>
-                        <option value="1" selected>全て</option>
-                        <option value="2">🤔 Needs help</option>
-                        <option value="3">✅ Solved</option>
-                    </select>
-                    <label>カテゴリ</label>
-                <?php } else { ?>
-                    <a href="#">← 戻る</a>
-                <?php } ?>
-            </div>
             <div class="col s12 m8 offset-m2">
                 <?php
                 if (!isset($_GET['id'])) {
                     require_once(__DIR__ . '/data/assets/top.php');
                 } else {
-                    require_once(__DIR__ . '/data/assets/threads.php');
+                    if ($_GET['id'] === 'create') {
+                        require_once(__DIR__ . '/data/assets/create.php');
+                    } else {
+                        require_once(__DIR__ . '/data/assets/threads.php');
+                    }
                 } ?>
             </div>
         </div>
@@ -45,14 +36,15 @@ require_once(__DIR__ . '/data/assets/setup.php');
             return new Promise(resolve => setTimeout(resolve, sec * 1000))
         }
 
-        $(document).ready( () => {
+        $(document).ready(() => {
             $('.sidenav').sidenav();
             $('select').formSelect();
             $('.tap-target').tapTarget();
+            $('.modal').modal();
             $('.dropdown-trigger').dropdown();
             openAndClose();
         });
-        const openAndClose = async() => {
+        const openAndClose = async () => {
             M.TapTarget.getInstance($('.tap-target')).open();
             await sleep(3);
             M.TapTarget.getInstance($('.tap-target')).close();

@@ -1,0 +1,15 @@
+RewriteEngine On
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\node_modules
+RedirectMatch 404 /\vendor
+# return 404 for direct .php requests
+RewriteCond %{THE_REQUEST} \.php[/\s?] [NC]
+RewriteRule !^error - [R=404,L]
+
+# silent rewrite to add .php extension
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]
+
+<Files ~ ".(json|log|md|lock)$">
+  RewriteRule .* - [R=404,L]
+</Files>
