@@ -1,7 +1,5 @@
 <?php
 require_once(__DIR__ . '/data/assets/setup.php');
-var_dump($_POST);
-exit();
 if(!isset($userId)){
     header('location: /?error=true');
     exit();
