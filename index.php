@@ -51,7 +51,8 @@ require_once(__DIR__ . '/data/assets/setup.php');
         }
 
         const check = () => {
-
+            alert($('input#title').val());
+            alert($('textarea#content').val());
         }
 
         const openNav = () => {
