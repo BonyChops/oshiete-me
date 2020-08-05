@@ -63,7 +63,7 @@ if (!$found) {
         <li><a onclick="ban();">報告する</a></li>
     </ul><br>
     <div class="row">
-        <form action="./id=<?= $_GET['id'] ?>" method="post">
+        <form action="./?id=<?= $_GET['id'] ?>" method="post">
             <div class="input-field col s12">
                 <textarea name="content" id="textarea1" class="materialize-textarea"></textarea>
                 <label for="textarea1">解答する...</label>
