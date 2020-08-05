@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/data/assets/setup.php');
+var_dump($_POST);
 if(!isset($userId)){
     header('location: /?error=true');
     exit();
@@ -23,4 +24,4 @@ $thread = [
 ];
 array_push($data['threads'], $thread);
 saveData($data);
-header('location: /');
+header('location: ./?success=true');
