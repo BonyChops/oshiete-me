@@ -35,4 +35,11 @@ $loggedIn = isset($_SESSION['GOOGLE_USER_INFO']);
 $threads = $data['threads'];
 $oauthTokens = $data['oauthTokens'];
 $animals = ['わに', 'かに', 'さる', 'きじ', 'いぬ', 'うさぎ'];
+
+//以下有効で常時ログイン必須に
+if(!$loggedIn){
+    header('location: '.googleLoginURI());
+    exit();
+}
+
 ?>
