@@ -9,7 +9,7 @@ function saveData($data){
     file_put_contents(DATA_PATH , json_encode($data));
 }
 
-$googleConfig = json_decode(file_get_contents(__DIR__.'/../google_client_secret.json'));
+$googleConfig = json_decode(file_get_contents(__DIR__.'/../client_secret.json'));
 
 define('GOOGLE_CLIENT_ID', $googleConfig->{"web"}->{"client_id"});
 define('GOOGLE_CLIENT_SECRET', $googleConfig->{"web"}->{"client_secret"});
