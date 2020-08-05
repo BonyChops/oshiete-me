@@ -1,80 +1,75 @@
 <?php
 ini_set('display_errors', "On");
 
-$params = ['content'];
-$paramsSolvedToggle = ['solvedToggle'];
 
-$addReply = true;
-$solvedToggle = true;
-foreach ($params as $param) {
-    if (!isset($_POST[$param])) {
-        $addReply = false;
-    }
-}
-foreach ($paramsSolvedToggle as $param) {
-    if (!isset($_POST[$param])) {
-        $solvedToggle = false;
-    }
-}
-if ($userId == $thread['id']) {
-    if ($addReply) {
-        $thread = findThread($_GET['id'], $threads);
-        $reply = $thread['reply'];
-        $date = new DateTime();
-        $reply = [
-            "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
-            "author" => $userId,
-            "content" => $_POST['content'],
-            "date" => $date->format(DateTime::ATOM),
-            "type" => "reply"
-        ];
-        array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
-        saveData($data);
-        header('location: ./?id=' . $_GET['id']);
-        exit();
-    }
+$thread = findThread($_GET['id'], $threads);
 
-    if ($solvedToggle) {
-        $thread = findThread($_GET['id'], $threads);
-        $reply = $thread['reply'];
-        $date = new DateTime();
-        $reply = [
-            "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
-            "author" => $userId,
-            "content" => $thread['isSolved'] ? 'notSolved' : 'solved',
-            "date" => $date->format(DateTime::ATOM),
-            "type" => "status"
-        ];
-        array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
-        $data['threads'][findThread($_GET['id'], $threads, true)]['isSolved'] = !$thread['isSolved'];
-        saveData($data);
-        header('location: ./?id=' . $_GET['id']);
-        exit();
-    }
-}
-
-?>
-
-<br><br>
-<div class="row">
-    <div class="col s12">
-        <a href="./">← 質問ひろばへ</a>
-    </div>
-</div>
-
-<?php
-$found = false;
-foreach ($threads as $threadSearch) {
-    if ($_GET['id'] == $threadSearch['id']) {
-        $found = true;
-        $thread = $threadSearch;
-        break;
-    }
-}
-if (!$found) {
+if ($thread === false) {
     echo '<h4>お探しの投稿は見つかりませんでした。</h4>';
 } else {
+
+    $params = ['content'];
+    $paramsSolvedToggle = ['solvedToggle'];
+
+    $addReply = true;
+    $solvedToggle = true;
+    foreach ($params as $param) {
+        if (!isset($_POST[$param])) {
+            $addReply = false;
+        }
+    }
+    foreach ($paramsSolvedToggle as $param) {
+        if (!isset($_POST[$param])) {
+            $solvedToggle = false;
+        }
+    }
+    if ($userId == $thread['id']) {
+        if ($addReply) {
+            $reply = $thread['reply'];
+            $date = new DateTime();
+            $reply = [
+                "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+                "author" => $userId,
+                "content" => $_POST['content'],
+                "date" => $date->format(DateTime::ATOM),
+                "type" => "reply"
+            ];
+            array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
+            saveData($data);
+            header('location: ./?id=' . $_GET['id']);
+            exit();
+        }
+
+        if ($solvedToggle) {
+            $reply = $thread['reply'];
+            $date = new DateTime();
+            $reply = [
+                "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+                "author" => $userId,
+                "content" => $thread['isSolved'] ? 'notSolved' : 'solved',
+                "date" => $date->format(DateTime::ATOM),
+                "type" => "status"
+            ];
+            array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
+            $data['threads'][findThread($_GET['id'], $threads, true)]['isSolved'] = !$thread['isSolved'];
+            saveData($data);
+            header('location: ./?id=' . $_GET['id']);
+            exit();
+        }
+    }
+
 ?>
+
+    <br><br>
+    <div class="row">
+        <div class="col s12">
+            <a href="./">← 質問ひろばへ</a>
+        </div>
+    </div>
+
+    <?php
+
+    ?>
 
     <div class="card<?php if ($thread['author'] == $userId) echo " yellow lighten-3" ?>">
         <div class="card-content">
