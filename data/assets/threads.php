@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', "On");
+
 $params = ['content'];
 $addReply = true;
 foreach($params as $param){
