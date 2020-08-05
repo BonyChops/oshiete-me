@@ -1,6 +1,7 @@
 <?php
 session_start();
 define('DATA_PATH', __DIR__ . '/../data.json');
+define('CONFIG_PATH', __DIR__ . '/../config.json');
 $data = file_exists(DATA_PATH) ? json_decode(file_get_contents(DATA_PATH), true) : [
     "threads"=> [],
     "oauthTokens"=> []
@@ -9,7 +10,7 @@ function saveData($data){
     file_put_contents(DATA_PATH , json_encode($data));
 }
 
-$config = json_decode(file_get_contents(DATA_PATH), true);
+$config = json_decode(file_get_contents(CONFIG_PATH), true);
 $verifiedDomain = $config['verified_domain'];
 
 $googleConfig = json_decode(file_get_contents(__DIR__.'/../client_secret.json'));
