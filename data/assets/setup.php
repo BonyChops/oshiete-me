@@ -39,6 +39,19 @@ $threads = $data['threads'];
 $oauthTokens = $data['oauthTokens'];
 $animals = ['わに', 'かに', 'さる', 'きじ', 'いぬ', 'うさぎ'];
 
-
+function findThread($id, $threads, $indexMode = false){
+    $cnt = 0;
+    foreach($threads as $thread){
+        if($thread['id'] == $id){
+            if(!$indexMode){
+                return $thread;
+            }else{
+                return $cnt;
+            }
+        }
+        $cnt++;
+    }
+    return false;
+}
 
 ?>
