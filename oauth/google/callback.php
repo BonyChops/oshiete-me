@@ -56,11 +56,12 @@ $userInfo = getGoogleUser($accessToken);
 if($userInfo === null){
         exit('Error: No user info recieved');
 }
-
-if(array_search($userInfo->{'hd'}, $verifiedDomain) ===false){
+var_dump($userInfo->{'hd'});
+var_dump(array_search($userInfo->{'hd'}, $verifiedDomain));
+if(array_search($userInfo->{'hd'}, $verifiedDomain) === false){
         exit("Sorry, but you aren't allowed to access this site.");
 }
-
+exit();
 session_start();
 $_SESSION['GOOGLE_ACCESS_TOKEN'] = $accessToken;
 $_SESSION['GOOGLE_USER_INFO'] = $userInfo;
