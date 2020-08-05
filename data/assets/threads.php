@@ -21,7 +21,7 @@ if($addReply){
     ];
     array_unshift($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
     saveData($data);
-    header('location: /?id='.$_GET['id']);
+    header('location: ./?id='.$_GET['id']);
     exit();
 }
 ?>
@@ -83,7 +83,7 @@ if (!$found) {
     $preData = [];
     shuffle($animals);
     foreach ($replies as $reply) { ?>
-        <div class="card">
+        <div class="card<?php if ($reply['author'] == $userId) echo " yellow lighten-3" ?>">
             <a class="btn-floating halfway-fab waves-effect waves-light red center-align"><i class="material-icons">feedback</i></a>
             <div class="card-content">
                 <span class="card-title">
