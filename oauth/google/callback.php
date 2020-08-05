@@ -1,7 +1,7 @@
 
 <title>Redirecting...</title>
 <?php
-require_once __DIR__.'/../../data/setup.php';
+require_once __DIR__.'/../../data/assets/setup.php';
 
 function getGoogleAuthToken($code) {
         $baseURL = 'https://accounts.google.com/o/oauth2/token';
