@@ -1,5 +1,13 @@
 <nav class="pink lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">おしえてME for 3J</a>
+    <div class="navbar-fixed">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">おしえてME for 3J</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="javascript: openNav();"><i class="material-icons">menu</i></a></li>
+            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </div>
+    <div class="sidenav-box">
         <ul id="slide-out" class="sidenav">
             <li>
                 <div class="user-view">
@@ -7,15 +15,11 @@
                     </div>
                     <p><img class="circle" src="<?= $loggedIn ? $userInfo->{"picture"} : 'https://github.com/bonychpos.png' ?>"></p>
                     <p><span class="white-text name"><?= $loggedIn ? $userInfo->{"name"} : 'おしえてME未ログイン' ?></span></p>
-                    <p><span class="white-text email"><?=  $userInfo->{'email'} ?></span></p>
+                    <p><span class="white-text email"><?= $userInfo->{'email'} ?></span></p>
                 </div>
             </li>
             <li><a href="<?= $loggedIn ? './logout' : googleLoginURI() ?>"><?= $loggedIn ?  'ログアウト' : 'ログイン' ?></a></li>
         </ul>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="javascript: openNav();"><i class="material-icons">menu</i></a></li>
-        </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
 
