@@ -12,13 +12,13 @@
         <div class="row">
             <h5>タイトル</h5>
             <div class="input-field col s12">
-                <input id="title" pattern=".*\S+.*" required type="text">
+                <input id="title" pattern=".*\S+.*" name ="title" required type="text">
                 <label for="title">わかりやすくて簡潔なタイトル...</label>
                 <span class="helper-text" data-error="空白で投稿はできません" data-success="">Helper text</span>
             </div>
             <h5>内容</h5>
             <div class="input-field col s12">
-                <textarea id="content" required pattern=".*\S+.*" class="materialize-textarea"></textarea>
+                <textarea id="content" name="content" required pattern=".*\S+.*" class="materialize-textarea"></textarea>
                 <label for="content">内容(改行OK)...</label>
                 <span class="helper-text" data-error="空白で投稿はできません" data-success="">Helper text</span>
             </div>
