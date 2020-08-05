@@ -1,7 +1,7 @@
 <br><br>
 <div class="row">
     <div class="col s12">
-        <a href="#">← 質問ひろばへ</a>
+        <a href="./">← 質問ひろばへ</a>
     </div>
 </div>
 
@@ -22,7 +22,7 @@ if (!$found) {
     <div class="card<?php if ($thread['author'] == $userId) echo " yellow lighten-3" ?>">
         <div class="card-content">
             <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?> <?= $thread['title'] ?></span>
-            <p><?= $thread['content'] ?></p>
+            <p><?= nl2br($thread['content']) ?></p>
         </div>
     </div><br>
     <div class="row">
@@ -66,7 +66,7 @@ if (!$found) {
 
                     }
                     ?> さん</span>
-                <p><?= $reply['content'] ?></p>
+                <p><?= nl2br($reply['content'])?></p>
             </div>
         </div><br>
 

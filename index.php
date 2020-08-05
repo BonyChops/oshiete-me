@@ -60,7 +60,11 @@ require_once(__DIR__ . '/data/assets/setup.php');
                 M.toast({html: '空白のまま投稿することはできません。'})
                 return false;
             }
+            M.Modal.getInstance($('#warnings')).open();
+        }
 
+        const submit = () => {
+            document.create_form.submit();
         }
 
         const openNav = () => {

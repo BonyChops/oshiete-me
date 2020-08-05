@@ -1,14 +1,14 @@
 <br><br>
 <div class="row">
     <div class="col s12">
-        <a href="#">← 質問ひろばへ</a>
+        <a href="./">← 質問ひろばへ</a>
     </div>
 </div>
 <h4>質問する</h4>
 <p>有識者〜〜〜〜〜助けてくれ〜〜〜〜〜🥺🥺🥺</p>
 <br><br>
 <div class="row">
-    <form class="col s12" method="POST" action="submit" >
+    <form class="col s12" name="create_form" method="POST" action="submit" onsubmit="check(); return false;">
         <div class="row">
             <h5>タイトル</h5>
             <div class="input-field col s12">
