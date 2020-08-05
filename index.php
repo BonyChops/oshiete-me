@@ -42,7 +42,7 @@ require_once(__DIR__ . '/data/assets/setup.php');
             $('.tap-target').tapTarget();
             $('.modal').modal();
             $('.dropdown-trigger').dropdown();
-            openAndClose();
+            //openAndClose();
         });
         const openAndClose = async () => {
             M.TapTarget.getInstance($('.tap-target')).open();

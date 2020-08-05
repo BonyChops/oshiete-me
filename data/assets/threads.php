@@ -16,41 +16,43 @@ foreach ($paramsSolvedToggle as $param) {
         $solvedToggle = false;
     }
 }
+if ($userId == $thread['id']) {
+    if ($addReply) {
+        $thread = findThread($_GET['id'], $threads);
+        $reply = $thread['reply'];
+        $date = new DateTime();
+        $reply = [
+            "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+            "author" => $userId,
+            "content" => $_POST['content'],
+            "date" => $date->format(DateTime::ATOM),
+            "type" => "reply"
+        ];
+        array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
+        saveData($data);
+        header('location: ./?id=' . $_GET['id']);
+        exit();
+    }
 
-if ($addReply) {
-    $thread = findThread($_GET['id'], $threads);
-    $reply = $thread['reply'];
-    $date = new DateTime();
-    $reply = [
-        "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
-        "author" => $userId,
-        "content" => $_POST['content'],
-        "date" => $date->format(DateTime::ATOM),
-        "type" => "reply"
-    ];
-    array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
-    saveData($data);
-    header('location: ./?id=' . $_GET['id']);
-    exit();
+    if ($solvedToggle) {
+        $thread = findThread($_GET['id'], $threads);
+        $reply = $thread['reply'];
+        $date = new DateTime();
+        $reply = [
+            "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+            "author" => $userId,
+            "content" => $thread['isSolved'] ? 'notSolved' : 'solved',
+            "date" => $date->format(DateTime::ATOM),
+            "type" => "status"
+        ];
+        array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
+        $data['threads'][findThread($_GET['id'], $threads, true)]['isSolved'] = !$thread['isSolved'];
+        saveData($data);
+        header('location: ./?id=' . $_GET['id']);
+        exit();
+    }
 }
 
-if ($solvedToggle) {
-    $thread = findThread($_GET['id'], $threads);
-    $reply = $thread['reply'];
-    $date = new DateTime();
-    $reply = [
-        "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
-        "author" => $userId,
-        "content" => $thread['isSolved'] ? 'notSolved' : 'solved',
-        "date" => $date->format(DateTime::ATOM),
-        "type" => "status"
-    ];
-    array_push($data['threads'][findThread($_GET['id'], $threads, true)]['reply'], $reply);
-    $data['threads'][findThread($_GET['id'], $threads, true)]['isSolved'] = !$thread['isSolved'];
-    saveData($data);
-    header('location: ./?id=' . $_GET['id']);
-    exit();
-}
 ?>
 
 <br><br>
