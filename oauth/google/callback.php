@@ -59,7 +59,7 @@ if($userInfo === null){
 if(array_search($userInfo->{'hd'}, $verifiedDomain) === false){
         exit("Sorry, but you aren't allowed to access this site.");
 }
-exit();
+
 session_start();
 $_SESSION['GOOGLE_ACCESS_TOKEN'] = $accessToken;
 $_SESSION['GOOGLE_USER_INFO'] = $userInfo;
