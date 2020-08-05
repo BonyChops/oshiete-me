@@ -8,7 +8,7 @@
 <p>有識者〜〜〜〜〜助けてくれ〜〜〜〜〜🥺🥺🥺</p>
 <br><br>
 <div class="row">
-    <form name="create" enctype='multipart/form-data' class="col s12" method="POST" action="submit" onsubmit="return check();">
+    <form class="col s12" method="POST" action="submit" >
         <div class="row">
             <h5>タイトル</h5>
             <div class="input-field col s12">
