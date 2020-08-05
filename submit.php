@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/data/assets/setup.php');
+var_dump(file_get_contents('php://input'));
 var_dump($_POST);
 exit();
 if(!isset($userId)){
