@@ -51,13 +51,11 @@ $accessToken = getGoogleAuthToken($_GET['code']);
 if($accessToken === null){
         exit("Error: No access token recieved");
 }
-var_dump($accessToken);
 $userInfo = getGoogleUser($accessToken);
 if($userInfo === null){
         exit('Error: No user info recieved');
 }
-var_dump($userInfo->{'hd'});
-var_dump(array_search($userInfo->{'hd'}, $verifiedDomain));
+
 if(array_search($userInfo->{'hd'}, $verifiedDomain) === false){
         exit("Sorry, but you aren't allowed to access this site.");
 }
