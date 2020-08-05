@@ -28,7 +28,7 @@ require_once(__DIR__ . '/data/assets/setup.php');
     </div>
 
     <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/select.js"></script>
     <script>
