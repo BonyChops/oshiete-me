@@ -92,7 +92,7 @@ if (!$found) {
         <li><a onclick="ban();">報告する</a></li>
     </ul><br>
     <form method="post" action="./?id=<?= $thread['id'] ?>">
-        <button class="btn waves-effect waves-light" type="submit" name="solvedToggle">
+        <button class="btn waves-effect waves-light right" type="submit" name="solvedToggle">
             <?= $thread['isSolved'] ? '🤔 また迷宮いりした...' : '✅ 解決した！' ?>
         </button>
     </form>
