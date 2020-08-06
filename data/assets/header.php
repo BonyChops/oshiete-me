@@ -57,3 +57,15 @@
         <a href="" class="modal-close waves-effect red btn delete-btn">消す</a>
     </div>
 </div>
+
+<!-- Modal Structure -->
+<div id="deleteComment" class="modal">
+    <div class="modal-content">
+        <h4>コメントを消す</h4>
+        <p>本当に消す？</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">消さない</a>
+        <a href="" class="modal-close waves-effect red btn delete-btn">消す</a>
+    </div>
+</div>

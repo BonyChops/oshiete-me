@@ -10,6 +10,7 @@ if ($thread === false || $thread['isDeleted']) {
 
     $params = ['content'];
     $paramsSolvedToggle = ['solvedToggle'];
+    $paramsDeleteComment = ['id', 'commentId'];
 
     $addReply = true;
     $solvedToggle = true;
@@ -23,6 +24,13 @@ if ($thread === false || $thread['isDeleted']) {
             $solvedToggle = false;
         }
     }
+
+    foreach ($paramsDeleteComment as $param) {
+        if (!isset($_GET[$param])) {
+            $deleteComment = false;
+        }
+    }
+
     if ($addReply) {
         $reply = $thread['reply'];
         $date = new DateTime();
@@ -55,6 +63,11 @@ if ($thread === false || $thread['isDeleted']) {
             header('location: ./?id=' . $_GET['id']);
             exit();
         }
+    }
+    $reply = findThread($_GET['commentId'], $thread['reply']);
+    if($reply['author'] == $userId){
+        $data['threads'][findThread($_GET['id'], $threads, true)]['reply'][findThread($_GET['commentId'], $thread['reply'], true)]['type'] = 'deleted';
+        saveData($data);
     }
 
 ?>
@@ -157,6 +170,12 @@ if ($thread === false || $thread['isDeleted']) {
             <div class="card<?php if ($reply['author'] == $userId) echo " yellow lighten-3" ?>">
                 <div class="card-content">
                     <p><?= $reply['content'] == "solved" ? '✅ 質問者さんがこのスレッドを"Solved"にマークしました。<br>解決して良かったです👏👏👏' : '🤔 おっと、質問者さんがまたこのスレッドを"Needs help"にマークしたみたいです。' ?></p>
+                </div>
+            </div><br>
+        <?php } else if ($reply['type'] == "deleted") { ?>
+            <div class="card<?php if ($reply['author'] == $userId) echo " yellow lighten-3" ?>">
+                <div class="card-content">
+                    <p class="grey-text"><i>このコメントは削除されました</i></p>
                 </div>
             </div><br>
         <?php } ?>
