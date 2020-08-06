@@ -70,6 +70,8 @@ if ($thread === false || $thread['isDeleted']) {
         if($reply['author'] == $userId){
             $data['threads'][findThread($_GET['id'], $threads, true)]['reply'][findThread($_GET['commentId'], $thread['reply'], true)]['type'] = 'deleted';
             saveData($data);
+            header('location: ./?id=' . $_GET['id']);
+            exit();
         }
     }
 ?>
