@@ -14,6 +14,7 @@ if ($thread === false || $thread['isDeleted']) {
 
     $addReply = true;
     $solvedToggle = true;
+    $deleteComment = true;
     foreach ($params as $param) {
         if (!isset($_POST[$param])) {
             $addReply = false;
