@@ -10,12 +10,11 @@ if(!isset($_GET['id'])){
     exit();
 }
 $thread = findThread($_GET['id'], $threads);
-$threadIndex = findThread($id, $threads, true);
+$threadIndex = findThread($_GET['id'], $threads, true);
 if($userId != $thread['author']){
     header('location: /?error=true');
     exit();
 }
 unset($data['threads'][$threadIndex]);
-
 saveData($data);
 header('location: ./?success=true');
