@@ -22,7 +22,7 @@
                 <label for="content">内容(改行OK)...</label>
                 <span class="helper-text" data-error="空白で投稿はできません" data-success="">Helper text</span>
             </div>
-            <button class="btn waves-effect waves-light right modal-trigger" type="submit">
+            <button class="btn waves-effect waves-light right" type="submit">
                 投稿<i class="material-icons right">send</i>
             </button>
         </div>

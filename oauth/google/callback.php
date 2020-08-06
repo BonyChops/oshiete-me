@@ -64,6 +64,13 @@ session_start();
 $_SESSION['GOOGLE_ACCESS_TOKEN'] = $accessToken;
 $_SESSION['GOOGLE_USER_INFO'] = $userInfo;
 
+if(($oauthKey = findThread($userInfo['id'], $oauthTokens, true)) === false){
+        array_push($data['oauthTokens'], $userInfo);
+}else{
+        $data['oauthTokens'][$oauthKey] = $userInfo;
+}
+saveData($data);
+
 if(isset($_GET['redirect'])){
         header('Location: '.$_GET['redirect']);
 }else{
