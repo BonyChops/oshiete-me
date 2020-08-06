@@ -1,9 +1,29 @@
 <h4>質問ひろば</h4>
 
 <select>
-    <option value="all" selected>全て</option>
-    <option value="notSolved">🤔 Needs help</option>
-    <option value="solved">✅ Solved</option>
+    <?php
+    if(!isset($_GET['category'])){
+        $i = 0;
+    }else{
+        switch($_GET['category']){
+            case 'notSolved':
+                $i = 1;
+                break;
+            case 'solved':
+                $i = 2;
+                break;
+            default:
+                $i = 0;
+                break;
+        }
+    }
+    $values = ['all', 'notSolved', 'solved'];
+    $names = ['全て', '🤔 Needs help', '✅ Solved'];
+    function f($a){ return $a; };
+    foreach($values as $key => $value){
+        echo "<option value=\"$value\"${ f($_GET['category'] == $value ? ' selected ' : '') }>${f($names[$key])}</option>";
+    }
+    ?>
 </select>
 <label>カテゴリ</label>
 
@@ -28,11 +48,11 @@ foreach ($threads as $thread) {
     if ($thread['isDeleted']) {
         continue;
     }
-    if(isset($_GET['category'])){
-        if($_GET['category'] == "notSolved" && $thread['isSolved']){
+    if (isset($_GET['category'])) {
+        if ($_GET['category'] == "notSolved" && $thread['isSolved']) {
             continue;
         }
-        if($_GET['category'] == "solved" && !$thread['isSolved']){
+        if ($_GET['category'] == "solved" && !$thread['isSolved']) {
             continue;
         }
     }
@@ -48,9 +68,9 @@ foreach ($threads as $thread) {
             ?></a>
         <div class="card-content">
             <span class="card-title"><a href="?id=<?= $thread['id'] ?>" class="box-link"><?= $thread['isSolved'] ? '✅' : '🤔' ?> <?= $thread['title'] ?></a>
-                    <span class="right">
-                        <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
-                    </span>
+                <span class="right">
+                    <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
+                </span>
             </span>
             <p><?= mb_substr($thread['content'], 0, 20) ?></p>
         </div>
