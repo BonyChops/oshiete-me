@@ -30,7 +30,7 @@ foreach ($threads as $thread) {
     }
     ?>
     <div class="card<?php if($thread['author'] == $userId) echo " yellow lighten-3" ?>">
-        <a href="?id=<?= $thread['id'] ?>" class="btn-floating halfway-fab waves-effect waves-light red center-align"><?php
+        <a href="?id=<?= $thread['id'] ?>" class="box-link btn-floating halfway-fab waves-effect waves-light red center-align"><?php
         if(count($thread['reply']) === 0){
             echo '<i class="material-icons">comment</i>';
         }else{

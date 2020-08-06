@@ -4,7 +4,17 @@ require_once(__DIR__ . '/data/assets/setup.php');
 
 <!DOCTYPE html>
 <html>
-
+<style>
+a.box-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent:-999px;
+    z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+}
+</style>
 <?php require_once(__DIR__ . '/data/assets/head.php'); ?>
 
 <body>
