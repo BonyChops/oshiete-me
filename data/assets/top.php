@@ -10,7 +10,7 @@
 
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a id="create" href="<?= $loggedIn ? '?id=create' : googleLoginURI() ?>"class="btn btn-floating btn-large cyan">
+    <a id="create" href="<?= $loggedIn ? '?id=create' : googleLoginURI() ?>" class="btn btn-floating btn-large cyan">
         <i class="material-icons">create</i>
     </a>
 </div>
@@ -25,31 +25,32 @@
 <?php
 //var_dump($threads);
 foreach ($threads as $thread) {
-    if($thread['isDeleted']){
+    if ($thread['isDeleted']) {
         continue;
     }
-    ?>
-    <div class="card<?php if($thread['author'] == $userId) echo " yellow lighten-3" ?>" onclick="window.location='?id=<?= $thread['id'] ?>';">
-        <a href="?id=<?= $thread['id'] ?>" class="btn-floating halfway-fab waves-effect waves-light red center-align"><?php
-        if(count($thread['reply']) === 0){
-            echo '<i class="material-icons">comment</i>';
-        }else{
-            echo count($thread['reply']);
-        }
-        ?></a>
+?>
+    <div class="card<?php if ($thread['author'] == $userId) echo " yellow lighten-3" ?>">
+        <a href="?id=<?= $thread['id'] ?>" class="btn-floating halfway-fab waves-effect waves-light red center-align">
+            <?php
+            if (count($thread['reply']) === 0) {
+                echo '<i class="material-icons">comment</i>';
+            } else {
+                echo count($thread['reply']);
+            }
+            ?></a>
         <div class="card-content">
-            <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?>
-                <span class="right">
-                    <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
-                </span>
+            <span class="card-title"><a href="?id=<?= $thread['id'] ?>" class="box-link"><?= $thread['isSolved'] ? '✅' : '🤔' ?> <?= $thread['title'] ?></a>
+                    <span class="right">
+                        <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
+                    </span>
             </span>
-            <p><?= mb_substr($thread['content'], 0, 20)?></p>
+            <p><?= mb_substr($thread['content'], 0, 20) ?></p>
         </div>
     </div>
     <ul id='dropdown_<?= $thread['id'] ?>' class='dropdown-content'>
-        <?php if($thread['author'] == $userId){ ?>
-        <li><a onclick="deleteThread(<?= $thread['id'] ?>)">削除</a></li>
-        <li class="divider" tabindex="-1"></li>
+        <?php if ($thread['author'] == $userId) { ?>
+            <li><a onclick="deleteThread(<?= $thread['id'] ?>)">削除</a></li>
+            <li class="divider" tabindex="-1"></li>
         <?php } ?>
         <li><a onclick="ban();">報告する</a></li>
     </ul>

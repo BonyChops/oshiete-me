@@ -11,6 +11,10 @@ foreach($params as $param){
         exit();
     }
 }
+if(mb_strlen($title) >= 50){
+    header('location: /?error=true');
+    exit();
+}
 $date = new DateTime();
 $thread = [
     "id" => isset($threads[0]) ? $threads[0]['id'] + 1: 0,
