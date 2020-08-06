@@ -45,7 +45,7 @@ function findThread($id, $threads, $indexMode = false){
             if(!$indexMode){
                 return $thread;
             }else{
-                return $$key;
+                return $key;
             }
         }
     }
