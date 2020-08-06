@@ -16,5 +16,6 @@ if($userId != $thread['author']){
     exit();
 }
 unset($data['threads'][$threadIndex]);
+$data['threads'] = array_values($data['threads']);
 saveData($data);
 header('location: ./?success=true');
