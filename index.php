@@ -4,16 +4,7 @@ require_once(__DIR__ . '/data/assets/setup.php');
 
 <!DOCTYPE html>
 <html>
-<style>
-a.box-link {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-</style>
+
 <?php require_once(__DIR__ . '/data/assets/head.php'); ?>
 
 <body>

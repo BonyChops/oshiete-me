@@ -29,7 +29,7 @@ foreach ($threads as $thread) {
         continue;
     }
     ?>
-    <div class="card<?php if($thread['author'] == $userId) echo " yellow lighten-3" ?>">
+    <div class="card<?php if($thread['author'] == $userId) echo " yellow lighten-3" ?>" onclick="window.location='?id=<?= $thread['id'] ?>';">
         <a href="?id=<?= $thread['id'] ?>" class="btn-floating halfway-fab waves-effect waves-light red center-align"><?php
         if(count($thread['reply']) === 0){
             echo '<i class="material-icons">comment</i>';
@@ -37,7 +37,6 @@ foreach ($threads as $thread) {
             echo count($thread['reply']);
         }
         ?></a>
-        <a href="?id=<?= $thread['id'] ?>" class="box-link"></a>
         <div class="card-content">
             <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?>
                 <span class="right">
