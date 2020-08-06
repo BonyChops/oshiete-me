@@ -30,7 +30,7 @@ foreach ($threads as $thread) {
     }
     ?>
     <div class="card<?php if($thread['author'] == $userId) echo " yellow lighten-3" ?>">
-        <a href="?id=<?= $thread['id'] ?>" class="box-link btn-floating halfway-fab waves-effect waves-light red center-align"><?php
+        <a href="?id=<?= $thread['id'] ?>" class="btn-floating halfway-fab waves-effect waves-light red center-align"><?php
         if(count($thread['reply']) === 0){
             echo '<i class="material-icons">comment</i>';
         }else{
@@ -38,7 +38,7 @@ foreach ($threads as $thread) {
         }
         ?></a>
         <div class="card-content">
-            <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?>
+            <span class="card-title"><a href="?id=<?= $thread['id'] ?>" class="box-link"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?></a>
                 <span class="right">
                     <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
                 </span>
