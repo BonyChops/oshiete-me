@@ -39,9 +39,9 @@ foreach ($threads as $thread) {
         ?></a>
         <a href="?id=<?= $thread['id'] ?>" class="box-link"></a>
         <div class="card-content">
-            <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?></a>
+            <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?>
                 <span class="right">
-                    <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i>
+                    <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
                 </span>
             </span>
             <p><?= mb_substr($thread['content'], 0, 20)?></p>
