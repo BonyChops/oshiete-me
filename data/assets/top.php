@@ -37,10 +37,11 @@ foreach ($threads as $thread) {
             echo count($thread['reply']);
         }
         ?></a>
+        <a href="?id=<?= $thread['id'] ?>" class="box-link"></a>
         <div class="card-content">
-            <span class="card-title"><a href="?id=<?= $thread['id'] ?>" class="box-link"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?></a>
+            <span class="card-title"><?= $thread['isSolved'] ? '✅' : '🤔' ?>  <?= $thread['title']?></a>
                 <span class="right">
-                    <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
+                    <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i>
                 </span>
             </span>
             <p><?= mb_substr($thread['content'], 0, 20)?></p>
