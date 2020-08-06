@@ -161,7 +161,7 @@ if ($thread === false || $thread['isDeleted']) {
             </div>
             <ul id='dropdown_reply_<?= $reply['id'] ?>' class='dropdown-content'>
                 <?php if ($reply['author'] == $userId) { ?>
-                    <li><a onclick="deleteThread(<?= $reply['id'] ?>)">削除</a></li>
+                    <li><a onclick="deleteComment(<?= $reply['id'] ?>)">削除</a></li>
                     <li class="divider" tabindex="-1"></li>
                 <?php } ?>
                 <li><a onclick="ban();">報告する</a></li>
