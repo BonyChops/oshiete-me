@@ -21,7 +21,7 @@
     $names = ['全て', '🤔 Needs help', '✅ Solved'];
     $_ = function($s){return $s;};
     foreach($values as $key => $value){
-        echo "<option value=\"$value\"{ $_($_GET['category'] == $value ? ' selected ' : '') }>{$_($names[$key])}</option>";
+        echo "<option value=\"$value\"{$_($_GET['category'] == $value ? ' selected ' : '')}>{$_($names[$key])}</option>";
     }
     ?>
 </select>
