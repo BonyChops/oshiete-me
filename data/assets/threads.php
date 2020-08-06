@@ -4,7 +4,7 @@ ini_set('display_errors', "On");
 
 $thread = findThread($_GET['id'], $threads);
 
-if ($thread === false) {
+if ($thread === false || $thread['isDeleted']) {
     echo '<h4>お探しの投稿は見つかりませんでした。</h4>';
 } else {
 

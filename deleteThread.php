@@ -19,7 +19,8 @@ if($userId != $thread['author']){
     header('location: /?error=true');
     exit();
 }
-unset($data['threads'][$threadIndex]);
-$data['threads'] = array_values($data['threads']);
+$data['threads'][$threadIndex]['isDeleted'] = true;
+//unset($data['threads'][$threadIndex]);
+//$data['threads'] = array_values($data['threads']);
 saveData($data);
 header('location: ./?success=true');

@@ -15,7 +15,7 @@
                 <div class="background pink">
                 </div>
                 <p><img class="circle" src="<?= $loggedIn ? $userInfo->{"picture"} : 'https://github.com/bonychpos.png' ?>"></p>
-                <p><span class="white-text name"><?= $loggedIn ? $userInfo->{"name"} : 'おしえてME未ログイン' ?></span></p>
+                <p><span class="white-text name"><?= $loggedIn ? $userInfo->{"name"}.' (匿名)' : 'おしえてME未ログイン' ?></span></p>
                 <p><span class="white-text email"><?= $userInfo->{'email'} ?></span></p>
             </div>
         </li>

@@ -24,7 +24,11 @@
 
 <?php
 //var_dump($threads);
-foreach ($threads as $thread) { ?>
+foreach ($threads as $thread) {
+    if($thread['isDeleted']){
+        continue;
+    }
+    ?>
     <div class="card<?php if($thread['author'] == $userId) echo " yellow lighten-3" ?>">
         <a href="?id=<?= $thread['id'] ?>" class="btn-floating halfway-fab waves-effect waves-light red center-align"><?php
         if(count($thread['reply']) === 0){

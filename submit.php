@@ -19,6 +19,7 @@ $thread = [
     "content" => $_POST['content'],
     "date" => $date->format(DateTime::ATOM),
     "isSolved" => false,
+    "isDeleted" => false,
     "reply" => []
 ];
 array_unshift($data['threads'], $thread);
