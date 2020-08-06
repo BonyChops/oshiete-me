@@ -64,12 +64,13 @@ if ($thread === false || $thread['isDeleted']) {
             exit();
         }
     }
-    $reply = findThread($_GET['commentId'], $thread['reply']);
-    if($reply['author'] == $userId){
-        $data['threads'][findThread($_GET['id'], $threads, true)]['reply'][findThread($_GET['commentId'], $thread['reply'], true)]['type'] = 'deleted';
-        saveData($data);
+    if($deleteComment){
+        $reply = findThread($_GET['commentId'], $thread['reply']);
+        if($reply['author'] == $userId){
+            $data['threads'][findThread($_GET['id'], $threads, true)]['reply'][findThread($_GET['commentId'], $thread['reply'], true)]['type'] = 'deleted';
+            saveData($data);
+        }
     }
-
 ?>
 
     <br><br>
