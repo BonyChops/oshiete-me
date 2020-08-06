@@ -10,6 +10,10 @@ if(!isset($_GET['id'])){
     exit();
 }
 $thread = findThread($_GET['id'], $threads);
+if($thread === false){
+    header('location: /?error=true');
+    exit();
+}
 $threadIndex = findThread($_GET['id'], $threads, true);
 if($userId != $thread['author']){
     header('location: /?error=true');
