@@ -36,7 +36,7 @@ if ($thread === false || $thread['isDeleted']) {
         $reply = $thread['reply'];
         $date = new DateTime();
         $reply = [
-            "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+            "id" => isset($reply[0]) ? $reply[array_key_last($reply)]['id'] + 1 : 0,
             "author" => $userId,
             "content" => $_POST['content'],
             "date" => $date->format(DateTime::ATOM),
