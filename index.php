@@ -36,7 +36,7 @@ require_once(__DIR__ . '/data/assets/setup.php');
             return new Promise(resolve => setTimeout(resolve, sec * 1000))
         }
 
-        $('select').change(() => {
+        $('select').change(function() {
             window.location.href = './?category='+$(this).val();
         });
 
