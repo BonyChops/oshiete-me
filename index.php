@@ -51,7 +51,8 @@ require_once(__DIR__ . '/data/assets/setup.php');
         }
 
         const deleteThread = (id) => {
-
+            $('delete-btn').attr('href', 'deleteThread?id='+id);
+            M.Modal.getInstance($('#delete')).open();
         }
 
         const check = () => {
