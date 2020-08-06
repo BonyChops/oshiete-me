@@ -40,16 +40,14 @@ $oauthTokens = $data['oauthTokens'];
 $animals = ['わに', 'かに', 'さる', 'きじ', 'いぬ', 'うさぎ'];
 
 function findThread($id, $threads, $indexMode = false){
-    $cnt = 0;
-    foreach($threads as $thread){
+    foreach($threads as $key => $thread){
         if($thread['id'] == $id){
             if(!$indexMode){
                 return $thread;
             }else{
-                return $cnt;
+                return $$key;
             }
         }
-        $cnt++;
     }
     return false;
 }

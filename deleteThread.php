@@ -15,7 +15,7 @@ if($userId != $thread['author']){
     header('location: /?error=true');
     exit();
 }
-array_splice($data['threads'], $threadIndex, 1);
+unset($data['threads'][$threadIndex]);
 
 saveData($data);
 header('location: ./?success=true');
