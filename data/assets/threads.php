@@ -89,7 +89,7 @@ if ($thread === false) {
     </ul><br>
     <form method="post" action="./?id=<?= $thread['id'] ?>">
         <?php if ($userId == $thread['author']) { ?>
-            <button class="btn waves-effect waves-light right" type="submit" name="solvedToggle">
+            <button class="btn waves-effect waves-light right <?= $thread['isSolved'] ? 'red' : ''?>" type="submit" name="solvedToggle">
                 <?= $thread['isSolved'] ? '🤔 また迷宮いりした...' : '✅ 解決した！' ?>
             </button>
         <?php } ?>
