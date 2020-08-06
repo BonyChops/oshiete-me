@@ -38,7 +38,7 @@ require_once(__DIR__ . '/data/assets/setup.php');
 
         $('select').change(() => {
             window.location.href = './?category='+$(this).val();
-        }
+        });
 
         $(document).ready(() => {
             $('.sidenav').sidenav();
