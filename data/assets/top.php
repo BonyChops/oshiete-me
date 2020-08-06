@@ -1,9 +1,9 @@
 <h4>質問ひろば</h4>
 
 <select>
-    <option value="1" selected>全て</option>
-    <option value="2">🤔 Needs help</option>
-    <option value="3">✅ Solved</option>
+    <option value="all" selected>全て</option>
+    <option value="notSolved">🤔 Needs help</option>
+    <option value="solved">✅ Solved</option>
 </select>
 <label>カテゴリ</label>
 
@@ -27,6 +27,14 @@
 foreach ($threads as $thread) {
     if ($thread['isDeleted']) {
         continue;
+    }
+    if(isset($_GET['category'])){
+        if($_GET['category'] == "notSolved" && $thread['isSolved']){
+            continue;
+        }
+        if($_GET['category'] == "solved" && !$thread['isSolved']){
+            continue;
+        }
     }
 ?>
     <div class="card<?php if ($thread['author'] == $userId) echo " yellow lighten-3" ?>">

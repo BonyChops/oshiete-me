@@ -36,6 +36,10 @@ require_once(__DIR__ . '/data/assets/setup.php');
             return new Promise(resolve => setTimeout(resolve, sec * 1000))
         }
 
+        $('select').change(() => {
+            window.location.href = './?category='+$(this).val();
+        }
+
         $(document).ready(() => {
             $('.sidenav').sidenav();
             $('select').formSelect();
