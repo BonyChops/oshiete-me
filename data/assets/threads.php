@@ -38,7 +38,7 @@ if ($thread === false) {
         header('location: ./?id=' . $_GET['id']);
         exit();
     }
-    if ($userId == $thread['id']) {
+    if ($userId == $thread['author']) {
         if ($solvedToggle) {
             $reply = $thread['reply'];
             $date = new DateTime();
@@ -141,11 +141,11 @@ if ($thread === false) {
                         }
                         ?> さん</span>
                     <p><?= nl2br($reply['content']) ?> <span class="right">
-                            <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $reply['id'] ?>'><i class="material-icons">more_vert</i></a>
+                            <a class='dropdown-trigger' href='#' data-target='dropdown_reply_<?= $reply['id'] ?>'><i class="material-icons">more_vert</i></a>
                         </span></p>
                 </div>
             </div>
-            <ul id='dropdown_<?= $reply['id'] ?>' class='dropdown-content'>
+            <ul id='dropdown_reply_<?= $reply['id'] ?>' class='dropdown-content'>
                 <?php if ($reply['author'] == $userId) { ?>
                     <li><a onclick="deleteThread(<?= $reply['id'] ?>)">削除</a></li>
                     <li class="divider" tabindex="-1"></li>
