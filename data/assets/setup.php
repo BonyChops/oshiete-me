@@ -56,7 +56,11 @@ function findThread($id, $threads, $indexMode = false){
 
 function randomId($length = 8)
 {
-    return strtoupper(substr(bin2hex(random_bytes($length)), 0, $length));
+    $max = pow(10, $length-1) - 1;                    // コードの最大値算出
+    $rand = random_int(0, $max);                    // 乱数生成
+    $code = sprintf('%0'. $length. 'd', $rand);     // 乱数の頭0埋め
+    $code = random(1, 9) . $code;
+    return $code;
 }
 
 
@@ -105,7 +109,7 @@ if (!($thread === false || $thread['isDeleted'])) {
             $reply = $thread['reply'];
             $date = new DateTime();
             $reply = [
-                "id" => isset($reply[0]) ? $reply[0]['id'] + 1 : 0,
+                "id" => randomId(),
                 "author" => $userId,
                 "content" => $thread['isSolved'] ? 'notSolved' : 'solved',
                 "date" => $date->format(DateTime::ATOM),
