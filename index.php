@@ -79,6 +79,15 @@ require_once(__DIR__ . '/data/assets/setup.php');
             M.Modal.getInstance($('#warnings')).open();
         }
 
+        const checkComment = () => {
+            const pattern = /.*\S+.*/
+            if($('textarea#content').val().match(pattern) === null){
+                M.toast({html: '空白のまま投稿することはできません。'})
+                return false;
+            }
+            return true;
+        }
+
         const submit = () => {
             document.create_form.submit();
         }

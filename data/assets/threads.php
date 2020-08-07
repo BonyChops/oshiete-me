@@ -112,9 +112,9 @@ if ($thread === false || $thread['isDeleted']) {
         <?php } ?>
     </form>
     <div class="row">
-        <form action="./?id=<?= $_GET['id'] ?>" method="post">
+        <form action="./?id=<?= $_GET['id'] ?>" method="post" onsubmit="checkComment(); return false;">
             <div class="input-field col s12">
-                <textarea name="content" id="textarea1" class="materialize-textarea"></textarea>
+                <textarea name="content" id="textarea1" required class="materialize-textarea"></textarea>
                 <label for="textarea1">回答する...</label>
             </div>
             <button class="btn waves-effect waves-light right modal-trigger" type="submit">
