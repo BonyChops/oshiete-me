@@ -32,10 +32,7 @@ saveData($data);
 
 if(isset($_POST['discord'])){
     $url = "https://".$_SERVER['SERVER_NAME'].substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'submit'));
-    var_dump($url);
     $result = feedbackDiscord($_POST['title'], $_POST['content'], $url);
-    var_dump($result);
-    exit();
 }
 
 header('location: ./?success=true');
@@ -61,7 +58,6 @@ function feedbackDiscord($title, $content, $url)
             ]
         ]
     ];
-    echo (json_encode($params));
     curl_setopt($ch, CURLOPT_URL, $uri);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));
