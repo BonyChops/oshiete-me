@@ -61,6 +61,7 @@ function feedbackDiscord($title, $content, $url)
             ]
         ]
     ];
+    echo (json_encode($params));
     curl_setopt($ch, CURLOPT_URL, $uri);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));
