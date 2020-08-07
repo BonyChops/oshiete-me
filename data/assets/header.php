@@ -1,6 +1,6 @@
 <div class="navbar-fixed">
     <nav class="pink lighten-1" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">おしえてME for 3J</a>
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">おしえてME</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="javascript: openNav();"><i class="material-icons">menu</i></a></li>
             </ul>
