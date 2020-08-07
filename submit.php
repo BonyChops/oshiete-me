@@ -30,7 +30,7 @@ $thread = [
 array_unshift($data['threads'], $thread);
 saveData($data);
 
-if($_POST['discord']){
+if(isset($_POST['discord'])){
     feedbackDiscord($_POST['title'], $_POST['content'], substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'submit')));
 }
 
