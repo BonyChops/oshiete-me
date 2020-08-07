@@ -31,7 +31,7 @@ array_unshift($data['threads'], $thread);
 saveData($data);
 
 if(isset($_POST['discord'])){
-    $url = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'submit'));
+    $url = $_SERVER['SERVER_NAME'].substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'submit'));
     var_dump($url);
     $result = feedbackDiscord($_POST['title'], $_POST['content'], $url);
     var_dump($result);
