@@ -33,8 +33,6 @@ saveData($data);
 if(isset($_POST['discord'])){
     $url = "https://".$_SERVER['SERVER_NAME'].substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'submit'));
     $result = feedbackDiscord($_POST['title'], $_POST['content'], $url);
-    var_dump($result);
-    exit();
 }
 
 header('location: ./?success=true');
@@ -55,12 +53,10 @@ function feedbackDiscord($title, $content, $url)
                 "title" => $title,
                 "description" => "```" . $content . "```\n[回答する](".$url.")",
                 "url" => $url,
-                "timestamp" => time(),
                 "color" => 5620992
             ]
         ]
     ];
-    echo json_encode($params, JSON_PRETTY_PRINT | JSON_UNESCAPED_LINE_TERMINATORS);
     curl_setopt($ch, CURLOPT_URL, $uri);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));
