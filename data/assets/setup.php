@@ -59,7 +59,7 @@ function randomId($length = 8)
     $max = pow(10, $length-1) - 1;                    // コードの最大値算出
     $rand = random_int(0, $max);                    // 乱数生成
     $code = sprintf('%0'. $length. 'd', $rand);     // 乱数の頭0埋め
-    $code = random(1, 9) . $code;
+    $code = rand(1, 9) . $code;
     return $code;
 }
 
