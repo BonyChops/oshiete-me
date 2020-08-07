@@ -54,6 +54,11 @@ function findThread($id, $threads, $indexMode = false){
     return false;
 }
 
+function randomId($length = 8)
+{
+    return strtoupper(substr(bin2hex(random_bytes($length)), 0, $length));
+}
+
 
 if (!($thread === false || $thread['isDeleted'])) {
     $params = ['content'];
@@ -84,7 +89,7 @@ if (!($thread === false || $thread['isDeleted'])) {
         $reply = $thread['reply'];
         $date = new DateTime();
         $reply = [
-            "id" => isset($reply[0]) ? $reply[count($reply) - 1]['id'] + 1 : 0,
+            "id" => randomId(),
             "author" => $userId,
             "content" => $_POST['content'],
             "date" => $date->format(DateTime::ATOM),

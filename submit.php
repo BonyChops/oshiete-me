@@ -16,7 +16,7 @@ if (mb_strlen($title) >= 50) {
     exit();
 }
 $date = new DateTime();
-$id = isset($threads[0]) ? $threads[0]['id'] + 1 : 0;
+$id = randomId();
 $thread = [
     "id" => $id,
     "author" => $userId,
