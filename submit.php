@@ -60,6 +60,7 @@ function feedbackDiscord($title, $content, $url)
             ]
         ]
     ];
+    echo json_encode($params, JSON_PRETTY_PRINT | JSON_UNESCAPED_LINE_TERMINATORS);
     curl_setopt($ch, CURLOPT_URL, $uri);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params));
