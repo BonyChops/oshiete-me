@@ -30,8 +30,8 @@ $thread = [
 array_unshift($data['threads'], $thread);
 saveData($data);
 
-if(isset($_POST['discord'])){
-    $url = "https://".$_SERVER['SERVER_NAME'].substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'submit'));
+if (isset($_POST['discord'])) {
+    $url = "https://" . $_SERVER['SERVER_NAME'] . substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], 'submit'));
     $result = feedbackDiscord($_POST['title'], $_POST['content'], $url);
 }
 
@@ -51,7 +51,8 @@ function feedbackDiscord($title, $content, $url)
         "embeds" => [
             [
                 "title" => $title,
-                "description" => "```" . $content . "```\n[回答する](".$url.")",
+                "avatar_url" => "https://github.com/qiita.png",
+                "description" => "```" . $content . "```\n[回答する](" . $url . ")",
                 "url" => $url,
                 "color" => 5620992
             ]
