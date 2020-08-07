@@ -33,6 +33,8 @@ saveData($data);
 if(isset($_POST['discord'])){
     $url = "https://".$_SERVER['SERVER_NAME'].substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'submit'));
     $result = feedbackDiscord($_POST['title'], $_POST['content'], $url);
+    var_dump($result);
+    exit();
 }
 
 header('location: ./?success=true');
