@@ -61,7 +61,7 @@ function randomId($length = 8)
     return $rand;
 }
 
-
+$thread = findThread($_GET['id'], $threads);
 if (!($thread === false || $thread['isDeleted'])) {
     $params = ['content'];
     $paramsSolvedToggle = ['solvedToggle'];
