@@ -56,7 +56,7 @@ function feedbackDiscord($title, $content, $url)
                 "title" => $title,
                 "description" => "```" . $content . "```\n[回答する](".$url.")",
                 "url" => $url,
-                "timestamp" => new DateTime(),
+                "timestamp" => time(),
                 "color" => 5620992
             ]
         ]
