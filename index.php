@@ -9,7 +9,6 @@ require_once(__DIR__ . '/data/assets/setup.php');
 
 <body>
     <?php require_once(__DIR__ . '/data/assets/header.php'); ?>
-
     <div class="container">
         <div class="row">
             <div class="col s12 m8 offset-m2">
