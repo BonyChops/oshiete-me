@@ -115,7 +115,7 @@ if ($thread === false || $thread['isDeleted']) {
         <form action="./?id=<?= $_GET['id'] ?>" method="post">
             <div class="input-field col s12">
                 <textarea name="content" id="textarea1" class="materialize-textarea"></textarea>
-                <label for="textarea1">解答する...</label>
+                <label for="textarea1">回答する...</label>
             </div>
             <button class="btn waves-effect waves-light right modal-trigger" type="submit">
                 投稿<i class="material-icons right">send</i>

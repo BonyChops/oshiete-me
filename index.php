@@ -32,7 +32,7 @@ require_once(__DIR__ . '/data/assets/setup.php');
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/select.js"></script>
     <script>
-        const threadId = <?= isset($_GET['id']) ? $_GET['id'] : 'false' ?>
+        const threadId = <?= isset($_GET['id']) ? '"'.$_GET['id'].'"' : 'false' ?>
 
         const sleep = (sec) => {
             return new Promise(resolve => setTimeout(resolve, sec * 1000))

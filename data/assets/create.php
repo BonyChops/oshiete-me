@@ -12,7 +12,7 @@
         <div class="row">
             <h5>タイトル</h5>
             <div class="input-field col s12">
-                <input id="title" pattern=".*\S+.*" name ="title" required type="text" maxlength="50">
+                <input id="title" pattern=".*\S+.*" name="title" required type="text" maxlength="50">
                 <label for="title">わかりやすくて簡潔なタイトル...</label>
                 <span class="helper-text" data-error="空白で投稿はできません" data-success=""></span>
             </div>
@@ -21,6 +21,13 @@
                 <textarea id="content" name="content" required pattern=".*\S+.*" class="materialize-textarea"></textarea>
                 <label for="content">内容(改行OK)...</label>
                 <span class="helper-text" data-error="空白で投稿はできません" data-success=""></span>
+            </div>
+            <div class="switch">
+                <label>
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                </label>
+                Discordにもトピックを投稿する(多分回答率が上がります)
             </div>
             <button class="btn waves-effect waves-light right" type="submit">
                 投稿<i class="material-icons right">send</i>
