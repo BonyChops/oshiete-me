@@ -56,11 +56,9 @@ function findThread($id, $threads, $indexMode = false){
 
 function randomId($length = 8)
 {
-    $max = pow(10, $length-1) - 1;                    // コードの最大値算出
-    $rand = random_int(0, $max);                    // 乱数生成
-    $code = sprintf('%0'. $length. 'd', $rand);     // 乱数の頭0埋め
-    $code = rand(1, 9) . $code;
-    return $code;
+    $max = pow(10, $length) - 1;                    // コードの最大値算出
+    $rand = random_int(pow(10, $length-1), $max);                    // 乱数生成
+    return $rand;
 }
 
 
