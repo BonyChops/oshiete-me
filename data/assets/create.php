@@ -24,7 +24,7 @@
             </div>
             <div class="switch">
                 <label>
-                    <input type="checkbox">
+                    <input type="checkbox" checked name="discord">
                     <span class="lever"></span>
                 </label>
                 Discordにもトピックを投稿する(多分回答率が上がります)

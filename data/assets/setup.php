@@ -12,6 +12,8 @@ function saveData($data){
 
 $config = json_decode(file_get_contents(CONFIG_PATH), true);
 $verifiedDomain = $config['verified_domain'];
+define('DISCORD_WEBHOCK', $config['discord_webhook']);
+
 
 $googleConfig = json_decode(file_get_contents(__DIR__.'/../client_secret.json'));
 
