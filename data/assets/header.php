@@ -25,7 +25,7 @@
 
 
 <!-- Modal Structure -->
-<div id="warnings" class="modal">
+<div id="warnings" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4>投稿する前にお読みください</h4>
         <p>有意義な議論の場にするため、最低限以下のことをお守りください。管理人が以下を守れていないと判断した場合、勝手に消しちゃうこともあります。</p>
