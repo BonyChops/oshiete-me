@@ -1,7 +1,12 @@
 <?php
 ini_set('display_errors', "On");
 
-
+function linkDetect($text)
+{
+    $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
+    $replace = '<a href="$1">$1</a>';
+    $text    = preg_replace($pattern, $replace, $text);
+}
 
 
 if ($thread === false || $thread['isDeleted']) {
@@ -27,7 +32,7 @@ if ($thread === false || $thread['isDeleted']) {
                     <a class='dropdown-trigger' href='#' data-target='dropdown_<?= $thread['id'] ?>'><i class="material-icons">more_vert</i></a>
                 </span>
             </span>
-            <p><?= nl2br($thread['content']) ?></p>
+            <p><?= linkDetect(nl2br($thread['content'])) ?></p>
         </div>
     </div>
     <ul id='dropdown_<?= $thread['id'] ?>' class='dropdown-content'>
@@ -39,7 +44,7 @@ if ($thread === false || $thread['isDeleted']) {
     </ul><br>
     <form method="post" action="./?id=<?= $thread['id'] ?>">
         <?php if ($userId == $thread['author']) { ?>
-            <button class="btn waves-effect waves-light right <?= $thread['isSolved'] ? 'red' : ''?>" type="submit" name="solvedToggle">
+            <button class="btn waves-effect waves-light right <?= $thread['isSolved'] ? 'red' : '' ?>" type="submit" name="solvedToggle">
                 <?= $thread['isSolved'] ? '🤔 また迷宮いりした...' : '✅ 解決した！' ?>
             </button>
         <?php } ?>
@@ -90,7 +95,7 @@ if ($thread === false || $thread['isDeleted']) {
                             }
                         }
                         ?> さん</span>
-                    <p><?= nl2br($reply['content']) ?> <span class="right">
+                    <p><?= linkDetect(nl2br($reply['content'])) ?> <span class="right">
                             <a class='dropdown-trigger' href='#' data-target='dropdown_reply_<?= $reply['id'] ?>'><i class="material-icons">more_vert</i></a>
                         </span></p>
                 </div>
